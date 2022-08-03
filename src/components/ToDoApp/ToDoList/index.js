@@ -2,10 +2,19 @@ import React, {useContext} from 'react';
 import {TodosContext} from './../../../context';
 
 const ToDoList = () => {
-  const value = useContext(TodosContext);
+  const [todos, setTodos] = useContext(TodosContext);
+  const deleteTask = (id) => {
+    setTodos([...todos.filter((task) => task.id !== id)])
+  }
+  console.log(todos)
   return (
     <ul>
-      {value.map((task) => <li key={task.id}>{task.body}</li>)}
+      {todos.map((task) =>
+        <li key={task.id}>
+          {task.body}
+          <button onClick={()=>(deleteTask(task.id))}>x</button>
+        </li>
+      )}
     </ul>
   );
 }

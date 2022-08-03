@@ -5,10 +5,11 @@ import ToDoList from './ToDoList';
 import {TodosContext} from './../../context';
 
 const ToDoApp = () => {
-  const [todos, setTodos] = useState([]);
+  const todosState = useState([]);
+
   return (
     <div>
-      <TodosContext.Provider value={todos}>
+      <TodosContext.Provider value={todosState}>
         <ToDoHeader />
         <ToDoForm />
         <ToDoList />
